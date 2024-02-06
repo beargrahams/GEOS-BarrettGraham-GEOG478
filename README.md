@@ -2,7 +2,7 @@
 Barrett Graham
 | Assignment | Description | Link                                      |
 |------------|-------------|-------------------------------------------|
-| HW1        |    1st repo |   [Link to lab 1](https://www.google.com "Lab1")                                        |
+| HW1        |    1st repo |                                           |
 | HW2        |             |                                           |
 | HW3        |             |                                           |
 | HW4        |             |                                           |
