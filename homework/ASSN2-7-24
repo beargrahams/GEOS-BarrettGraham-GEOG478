@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h2>This is your age on Mars</h2>
+<button type="button" onclick="mars()">Mars</button>
+<p Id="demo">Calculating....</p>
+<script>
+var myage=22;
+var myageindays=myage*365;
+function mars() {
+document.getElementById("demo").innerHTML = "On Mars I am this many years old " + myageindays/678;
+}
+</script>
+</body>
+</html>
