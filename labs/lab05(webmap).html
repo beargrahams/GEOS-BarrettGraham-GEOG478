@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Web Map</title>
+  <!-- Include Leaflet CSS file -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+       integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+       crossorigin=""/>
+  <style>
+    body, html, #map {
+      padding: 0;
+      margin: 0;
+      height: 100%;
+      width: 100vw;
+    }
+  </style>
+</head>
+<body>
+  <!-- Put a div element with a certain id where you want your map to be -->
+  <div id="map"></div>
+  <!-- Include Leaflet JavaScript file after Leaflet’s CSS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+       integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+       crossorigin=""></script>
+  <script>
+    // Initialize the map and zoom to College Station, TX
+    var map = L.map('map').setView([30.6102, -96.3429], 15);
+    
+    // Add OpenStreetMap tile layer
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    // Draw a circle around Kyle Field with a popup
+    var kyleField = L.marker([30.6102, -96.3419]).addTo(map).bindPopup("Kyle Field");
+    var circle = L.circle([30.6102, -96.3419], {
+        color: 'blue',
+        fillColor: 'blue',
+        fillOpacity: 0.2,
+        radius: 100
+    }).addTo(map);
+    kyleField.openPopup();
+    
+    // Create custom icons with popups for O&M and Academic Building
+    var customIcon = L.icon({
+        iconUrl: 'https://brandguide.tamu.edu/assets/img/logos/tam-logo.png',
+        iconSize: [38, 95],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76]
+    });
+
+    var oAndM = L.marker([30.61772068649637, -96.33667591172755], {icon: customIcon}).addTo(map).bindPopup("O&M Building");
+    var academicBuilding = L.marker([30.615756476982668, -96.34078272932823], {icon: customIcon}).addTo(map).bindPopup("Academic Building");
+    
+    // Create event to show coordinates in a popup when clicking on the map
+    function onMapClick(e) {
+        L.popup()
+            .setLatLng(e.latlng)
+            .setContent("You clicked the map at " + e.latlng.toString())
+            .openOn(map);
+    }
+
+    map.on('click', onMapClick);
+  </script>
+</body>
+</html>
