@@ -7,6 +7,6 @@ Barrett Graham
 | LAB03        |             |                                           |
 | LAB04        |             |                                           |
 | LAB05        |             |                                           |
-| LAB06        |             |                                           |
+| LAB06        |   tamuwebmap          | [Link to lab 6](https://github.com/beargrahams/GEOS-BarrettGraham-GEOG478/commit/c1bc385fad83775a060ab2a3a7750be4d13f6510#diff-cf8a7409cbaac9694707acd9381e8060bb86574d1220e70a8626d57bb18959b1 "Lab6")                                          |
 | LAB07        |             |                                           |
 | LAB08        |             |                                           |
