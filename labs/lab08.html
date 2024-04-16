@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temporary Parking Spots on TAMU Campus</title>
+    <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css">
+    <style>
+        html, body {
+            padding: 0;
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        #viewDiv {
+            height: calc(100% - 50px); /* Adjust height to accommodate title */
+            width: 100%;
+        }
+        #title {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000; /* Ensure title is above the map */
+        }
+    </style>
+    <script src="https://js.arcgis.com/4.24/"></script>
+    <script>
+        require([
+            "esri/Map",
+            "esri/views/MapView",
+            "esri/layers/FeatureLayer"
+        ], function(Map, MapView, FeatureLayer) {
+
+            // Create a map
+            var map = new Map({
+                basemap: "streets-navigation-vector"
+            });
+
+            // Create a view
+            var view = new MapView({
+                container: "viewDiv",
+                map: map,
+                center: [-96.341, 30.613],
+                zoom: 14
+            });
+
+            // Create a feature layer
+            var featureLayer = new FeatureLayer({
+                url: "https://services1.arcgis.com/qr14biwnHA6Vis6l/arcgis/rest/services/tempspots/FeatureServer",
+                outFields: ["*"], // Include all fields
+                popupTemplate: { // Define popup template
+                    title: "{LotNumber2}",
+                    content: "This parking lot has temporary parking spots available."
+                }
+            });
+
+            // Add the feature layer to the map
+            map.add(featureLayer);
+        });
+    </script>
+</head>
+<body>
+    <div id="title">Temporary Parking Spots on TAMU Campus</div>
+    <div id="viewDiv"></div>
+</body>
+</html>
+
+
